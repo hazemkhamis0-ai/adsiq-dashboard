@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { message, context, history } = req.body
   const apiKey = process.env.GEMINI_API_KEY
-  if (!apiKey) return res.status(200).json({ reply: 'مفتاح الذكاء الاصطناعي غير موجود. روح Vercel → Settings → Environment Variables وأضف GEMINI_API_KEY' })
+  if (!apiKey) return res.status(200).json({ reply: 'مفتاح الذكاء الاصطناعي غير موجود.' })
 
   const systemPrompt = `أنت محلل إعلانات رقمي خبير ومستشار بيزنس متخصص في السوق العربي. أجب دائماً بالعربية بشكل عملي ومفيد. ${context ? 'بيانات الحملات: ' + context : ''}`
 
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   ]
 
   try {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ contents, generationConfig: { temperature: 0.7, maxOutputTokens: 1500 } })
