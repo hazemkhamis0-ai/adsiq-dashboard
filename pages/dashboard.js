@@ -266,7 +266,7 @@ TikTok Ads — الصرف: ${tt.spend.toFixed(0)} | ROAS: ${tt.spend>0?(tt.reven
 
       <div style={{display:'flex',minHeight:'100vh'}}>
         {/* Sidebar */}
-        <div style={{width:230,background:'#0d0d1a',borderLeft:'1px solid #161628',display:'flex',flexDirection:'column',position:'fixed',height:'100vh',zIndex:10}}>
+        <div style={{width:230,background:'#0d0d1a',borderLeft:'1px solid #161628',display:'flex',flexDirection:'column',position:'fixed',height:'100vh',zIndex:10,overflowY:'auto'}}>
           <div style={{padding:'18px 16px',borderBottom:'1px solid #161628',display:'flex',alignItems:'center',gap:10}}>
             <div style={{width:34,height:34,background:'linear-gradient(135deg,#7F77DD,#534AB7)',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
               <svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M8 30L18 12L25 23L29 17L36 30H8Z" fill="white"/></svg>
@@ -339,7 +339,8 @@ TikTok Ads — الصرف: ${tt.spend.toFixed(0)} | ROAS: ${tt.spend>0?(tt.reven
             ))}
           </div>
 
-          <nav style={{padding:8,flex:1,overflowY:'auto'}}>
+          <div style={{padding:8,borderTop:'1px solid #161628'}}>
+            <div style={{fontSize:10,color:'#333',padding:'6px 4px 4px',fontWeight:700,letterSpacing:.5}}>القائمة</div>
             {[
               {id:'overview',label:'نظرة عامة',icon:'📊'},
               {id:'campaigns',label:'الحملات',icon:'📢'},
@@ -351,7 +352,7 @@ TikTok Ads — الصرف: ${tt.spend.toFixed(0)} | ROAS: ${tt.spend>0?(tt.reven
                 {item.id==='issues'&&issues.length>0&&<span style={{marginRight:'auto',background:'#3a0f0f',color:'#f87171',fontSize:10,padding:'1px 6px',borderRadius:8}}>{issues.length}</span>}
               </button>
             ))}
-          </nav>
+          </div>
 
           <div style={{padding:10,borderTop:'1px solid #161628'}}>
             <button onClick={logout} className="btn-ghost" style={{width:'100%',justifyContent:'center'}}>تسجيل الخروج</button>
